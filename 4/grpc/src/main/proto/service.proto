@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package service;
+
+option java_package = "ru.itis.grpc.proto.service";
+option java_multiple_files = true;
+
+service Calculator {
+
+  rpc GetSqrt(CalculateRequest) returns (CalculateResponse) {}
+
+  rpc CalculateStd(stream CalculateRequest) returns (CalculateResponse) {}
+
+  rpc GetFactors(CalculateRequest) returns (stream CalculateResponse) {}
+
+  rpc GetMaximum(stream CalculateRequest) returns (stream CalculateResponse) {}
+
+}
+
+message CalculateRequest {
+  double num = 1;
+}
+
+message CalculateResponse {
+  double num = 1;
+}
+
